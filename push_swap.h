@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 16:17:59 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 19:36:58 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/03 19:20:55 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	rrr(t_list **a, t_list **b);
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **b, t_list **a);
 
-int	check_args(char *str);
+void	bubble(t_list **stack_a, t_list **stack_b);
+
 int	ft_atoi(const char *str);
-int     ft_disorder_index(t_list *stack);
-t_list  *ft_lstnew(int content);
+int	check_args(char *str);
+int ft_disorder_index(t_list *stack);
+int	dup_controller(t_list *stack);
+t_list  *ft_newlst(int content);
 #endif

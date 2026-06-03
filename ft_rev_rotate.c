@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rev_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:05:06 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 16:52:38 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:58:08 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ static void	ft_rev_rotate(t_list **a)
 void	rra(t_list **a)
 {
 	ft_rev_rotate(a);
-	write(1, "rra", 3);
+	printf("rra\n");
 }
 
 void	rrb(t_list **b)
 {
 	ft_rev_rotate(b);
-	write(1, "rrb", 3);
+	printf("rrb\n");
 }
 
 void	rrr(t_list **a, t_list **b)
 {
 	ft_rev_rotate(a);
 	ft_rev_rotate(b);
-	write(1, "rrr", 3);
+	printf("rrr\n");
 }

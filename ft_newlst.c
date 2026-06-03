@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_newlst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/30 13:38:27 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 16:47:34 by antgarci         ###   ########.fr       */
+/*   Created: 2026/06/03 16:59:39 by antgarci          #+#    #+#             */
+/*   Updated: 2026/06/03 17:00:48 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_newlst(int content)
 {
 	t_list	*n1;
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	n1->num = content;
 	n1->next = NULL;
+	n1->prev = NULL;
 	return (n1);
 }
 /*

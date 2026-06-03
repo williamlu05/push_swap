@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:36:31 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 19:37:02 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/03 19:09:20 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,12 @@ static void	create_stack(t_list **stack_a, char **argv)
 			free_stack(stack_a);
 			exit (1);
 		}
-		lstadd_front(stack_a, ft_lstnew(ft_atoi(argv[i++])));
+		lstadd_front(stack_a, ft_newlst(ft_atoi(argv[i++])));
+	}
+	if (dup_controller(*stack_a) == 1)
+	{
+		free_stack(stack_a);
+		exit (1);
 	}
 }
 
@@ -100,7 +105,17 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	create_stack(&stack_a, argv);
+	printf("stack creado\n");
+	print_stack(stack_a, 'A');
+	print_stack(stack_b, 'B');
+	printf("\n");
+	printf("===BUBBLE SORT===\n");
+	bubble(&stack_a, &stack_b);
+	printf("===RESULT==\n");
+	print_stack(stack_a, 'A');
+	print_stack(stack_b, 'B');
 
+/*
 	printf("===I.DESORDEN===\n");
 	ft_disorder_index(stack_a);
 
@@ -134,6 +149,6 @@ int	main(int argc, char **argv)
 	write(1, "\n", 1);
 	print_stack(stack_a, 'A');
 	print_stack(stack_b, 'B');
-
+*/
 	return (0);
 }

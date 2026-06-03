@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:32:37 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 17:00:43 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:57:25 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ static void	ft_swap(t_list **stack)
 	t_list *last;
 	t_list *c;
 
-	if (!*stack || (*stack)->next == *stack)
+	if (!(*stack) || (*stack)->next == *stack)
 		return ;
+	if ((*stack)->next->next == *stack)
+	{
+		*stack = (*stack)->next;
+		return ;
+	}
 	a = *stack;
 	b = a->next;
 	last = a->prev;
@@ -37,18 +42,18 @@ static void	ft_swap(t_list **stack)
 void	sa(t_list **a)
 {
 	ft_swap(a);
-	write(1,"sa", 2);
+	printf("sa\n");
 }
 
 void	sb(t_list **b)
 {
 	ft_swap(b);
-	write(1, "sb", 2);
+	printf("sb\n");
 }
 
 void	ss(t_list **a, t_list **b)
 {
 	ft_swap(a);
 	ft_swap(b);
-	write(1, "ss", 2);
+	printf("ss\n");
 }

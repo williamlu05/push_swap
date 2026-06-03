@@ -1,7 +1,7 @@
 NAME = push_swap.a
 
 SRCS = ft_atoi.c\
-       ft_lstnew.c\
+       ft_newlst.c\
        ft_check_args.c\
        ft_push.c\
        ft_rev_rotate.c\

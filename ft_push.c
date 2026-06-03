@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:24 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 16:48:22 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/03 18:58:24 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void	ft_push(t_list **dst, t_list **src)
 void	pa(t_list **a, t_list **b)
 {
 	ft_push(a, b);
-	write(1, "pa", 2);
+	printf("pa\n");
 }
 
 void	pb(t_list **b, t_list **a)
 {
 	ft_push(b, a);
-	write(1, "pb", 2);
+	printf("pb\n");
 }
