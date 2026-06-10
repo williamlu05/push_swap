@@ -45,4 +45,9 @@ int	check_args(char *str);
 int ft_disorder_index(t_list *stack);
 int	dup_controller(t_list *stack);
 t_list  *ft_newlst(int content);
+
+void    mergesort(t_list **stack_a, t_list **stack_b);
+void    merge_to_a(t_list **a, t_list **b, int ca, int cb);
+void    merge_to_b(t_list **a, t_list **b, int ca, int cb);
+int     ft_sizelst(t_list *lst);
 #endif

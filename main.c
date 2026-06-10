@@ -105,15 +105,10 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	create_stack(&stack_a, argv);
-	printf("stack creado\n");
+	//  if (argv[2] )
+	//	execute_flag()
+	mergesort(&stack_a, &stack_b);
 	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
-	printf("\n");
-	printf("===BUBBLE SORT===\n");
-	bubble(&stack_a, &stack_b);
-	printf("===RESULT==\n");
-	print_stack(stack_a, 'A');
-	print_stack(stack_b, 'B');
 
 /*
 	printf("===I.DESORDEN===\n");
