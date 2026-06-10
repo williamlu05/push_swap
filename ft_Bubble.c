@@ -33,9 +33,7 @@ void    bubble(t_list **stack_a, t_list **stack_b)
 {
     int     len;
     int     i;
-    int     moves;
 
-    moves = 0;
     len = ft_sizelst(*stack_a);
     while (len > 1)
     {
