@@ -6,7 +6,7 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:59:39 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 17:00:48 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/05 17:12:05 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_newlst(int content)
 	n1->num = content;
 	n1->next = NULL;
 	n1->prev = NULL;
+	n1->index = 0;
 	return (n1);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:36:31 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 19:09:20 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:04:07 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,20 @@ void	print_stack(t_list *stack, char c)
 	}
 	printf("%d", current->num);
 }
+static void		index_test(t_list **stack_a)
+{
+	t_list	*current;
+	int		i;
 
+	i = 0;
+	current = (*stack_a);
+	while (current != (*stack_a)->prev)
+	{
+		printf("%d\n", current->index);
+		current = current->next;
+	}
+	printf("%d\n", current->index);
+}
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -109,8 +122,14 @@ int	main(int argc, char **argv)
 	print_stack(stack_a, 'A');
 	print_stack(stack_b, 'B');
 	printf("\n");
-	printf("===BUBBLE SORT===\n");
-	bubble(&stack_a, &stack_b);
+	//printf("===BUBBLE SORT===\n");
+	//bubble(&stack_a, &stack_b);
+	printf("===CHUNK SORT===\n");
+	to_index(&stack_a);
+	printf("==INDEX==\n");
+	index_test(&stack_a);
+	printf("=========\n");
+	chunks_sort(&stack_a, &stack_b);
 	printf("===RESULT==\n");
 	print_stack(stack_a, 'A');
 	print_stack(stack_b, 'B');

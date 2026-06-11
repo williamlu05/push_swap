@@ -6,7 +6,7 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 16:17:59 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 19:20:55 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:37:29 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_list
 {
 	int	num;
+	int	index;
 	struct	s_list *next;
 	struct	s_list *prev;
 }	t_list;
@@ -39,10 +40,12 @@ void	pa(t_list **a, t_list **b);
 void	pb(t_list **b, t_list **a);
 
 void	bubble(t_list **stack_a, t_list **stack_b);
+void	chunks_sort(t_list **stack_a, t_list **stack_b);
 
-int	ft_atoi(const char *str);
-int	check_args(char *str);
-int ft_disorder_index(t_list *stack);
-int	dup_controller(t_list *stack);
+void	to_index(t_list **stack_a);
+int		ft_atoi(const char *str);
+int		check_args(char *str);
+int 	ft_disorder_index(t_list *stack);
+int		dup_controller(t_list *stack);
 t_list  *ft_newlst(int content);
 #endif

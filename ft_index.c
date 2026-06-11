@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_Bubble.c                                        :+:      :+:    :+:   */
+/*   ft_index.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/03 17:29:42 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/05 18:29:50 by antgarci         ###   ########.fr       */
+/*   Created: 2026/06/05 17:10:59 by antgarci          #+#    #+#             */
+/*   Updated: 2026/06/11 14:35:11 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,30 @@ static int	ft_sizelst(t_list *lst)
 	return (size + 1);
 }
 
-void    bubble(t_list **stack_a, t_list **stack_b)
+void    to_index(t_list **stack_a)
 {
-    int     len;
+    t_list  *current;
+    t_list  *compare;
+    int     ind;
     int     i;
-    int     moves;
+    int     j;
 
-    moves = 0;
-    len = ft_sizelst(*stack_a);
-    while (len > 1)
+    i = 0;
+    current = (*stack_a);
+    while(i < ft_sizelst(*stack_a))
     {
-        i = 0;
-        while (i < len)
+        compare = (*stack_a);
+        ind = 0;
+        j = 0;
+        while(j < ft_sizelst(*stack_a))
         {
-            if ((*stack_a)->num > (*stack_a)->next->num)
-                sa(stack_a);
-            ra(stack_a);
-            i++;
+            if(current->num > compare->num)
+                ind++;
+            j++;
+            compare = compare->next;
         }
-        pb(stack_b, stack_a);
-        len--;
-    }
-    pb(stack_b, stack_a);
-    len = ft_sizelst(*stack_b);
-    while (len > 0)
-    {
-        rrb(stack_b);
-        pb(stack_a, stack_b);
-        len--;
+        i++;
+        current->index = ind;
+        current = current->next;
     }
 }
