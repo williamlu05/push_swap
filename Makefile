@@ -1,36 +1,50 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/04/24 14:55:44 by wlu-bjor          #+#    #+#              #
-#    Updated: 2026/05/08 20:48:14 by wlu-bjor         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME = libftprintf.a
+NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c ft_putnbr_fd.c ft_putptr_fd.c utils.c
+PRINTF_DIR = ft_printf
+PRINTF = $(PRINTF_DIR)/libftprintf.a
+
+SRCS = main.c \
+       ft_init.c \
+       utils.c \
+       utils_lst.c \
+       ft_disorder_index.c \
+       flags.c \
+       strategy.c \
+       bench.c \
+       ft_swap.c \
+       ft_push.c \
+       ft_rotate.c \
+       ft_rev_rotate.c \
+       sort_small.c \
+       ft_bubble.c \
+       ft_mergesort.c \
+       utils_merge.c \
+       ft_chunksort.c \
+       utils_chunk.c \
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-		ar rcs $(NAME) $(OBJS)
+$(PRINTF):
+	$(MAKE) -C $(PRINTF_DIR)
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $< -o $@
+$(NAME): $(PRINTF) $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) $(PRINTF) -o $(NAME)
+
+%.o: %.c push_swap.h
+	$(CC) $(FLAGS) -I $(PRINTF_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
+	$(MAKE) -C $(PRINTF_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(PRINTF_DIR) fclean
 
 re: fclean all
 

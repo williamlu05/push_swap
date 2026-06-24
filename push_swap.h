@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 16:17:59 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/23 19:20:55 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/24 17:38:16 by wlu-bjor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	merge_to_b(t_ps *ps, int ca, int cb);
 void	chunk_sort(t_ps *ps);
 void	assign_index(t_list *stack);
 int		isqrt(int n);
-int		max_index_pos(t_list *b, int n);
+int		max_index_pos(t_list *b, int n, int k);
 
 #endif
