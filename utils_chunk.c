@@ -56,26 +56,40 @@ int	isqrt(int n)
 	return (r);
 }
 
-int	max_index_pos(t_list *b, int n)
+static int	keep_max(t_list *node, int pos, int best, int *bpos)
+{
+	if (node->index > best)
+	{
+		*bpos = pos;
+		return (node->index);
+	}
+	return (best);
+}
+
+int	max_index_pos(t_list *b, int n, int k)
 {
 	t_list	*cur;
-	int		pos;
 	int		best;
-	int		best_pos;
+	int		bpos;
+	int		pos;
 
+	bpos = 0;
+	best = -1;
 	cur = b;
 	pos = 0;
-	best = cur->index;
-	best_pos = 0;
-	while (pos < n)
+	while (pos < n && pos < k)
 	{
-		if (cur->index > best)
-		{
-			best = cur->index;
-			best_pos = pos;
-		}
+		best = keep_max(cur, pos, best, &bpos);
 		cur = cur->next;
 		pos++;
 	}
-	return (best_pos);
+	cur = b->prev;
+	pos = n - 1;
+	while (pos >= n - k && pos >= k)
+	{
+		best = keep_max(cur, pos, best, &bpos);
+		cur = cur->prev;
+		pos--;
+	}
+	return (bpos);
 }

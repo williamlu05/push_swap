@@ -39,7 +39,7 @@ static void	push_phase(t_ps *ps, int n, int chunk_size)
 	}
 }
 
-static void	ret_phase(t_ps *ps, int n)
+static void	ret_phase(t_ps *ps, int n, int k)
 {
 	int	size;
 	int	pos;
@@ -48,7 +48,7 @@ static void	ret_phase(t_ps *ps, int n)
 	size = n;
 	while (size > 0)
 	{
-		pos = max_index_pos(ps->b, size);
+		pos = max_index_pos(ps->b, size, k);
 		cnt = size - pos;
 		if (pos <= size / 2)
 			while (pos-- > 0)
@@ -74,5 +74,5 @@ void	chunk_sort(t_ps *ps)
 	assign_index(ps->a);
 	chunk_size = isqrt(n);
 	push_phase(ps, n, chunk_size);
-	ret_phase(ps, n);
+	ret_phase(ps, n, chunk_size);
 }
