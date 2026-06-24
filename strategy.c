@@ -24,6 +24,8 @@ void	adaptive_sort(t_ps *ps, double disorder)
 
 void	run_strategy(t_ps *ps, t_opts *opts, double disorder)
 {
+	if (small_sort(ps, ft_sizelst(ps->a)))
+		return ;
 	if (opts->strategy == S_SIMPLE)
 		bubble(ps);
 	else if (opts->strategy == S_MEDIUM)

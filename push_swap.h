@@ -87,6 +87,10 @@ void	adaptive_sort(t_ps *ps, double disorder);
 char	*strategy_name(int strategy, double disorder);
 void	print_summary(t_ps *ps, double disorder, char *name);
 
+int		small_sort(t_ps *ps, int n);
+void	sort_three(t_ps *ps);
+void	sort_five(t_ps *ps);
+
 void	bubble(t_ps *ps);
 void	mergesort(t_ps *ps);
 void	merge_to_a(t_ps *ps, int ca, int cb);
