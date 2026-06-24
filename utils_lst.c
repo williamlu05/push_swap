@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_newlst.c                                        :+:      :+:    :+:   */
+/*   utils_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/03 16:59:39 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 17:00:48 by antgarci         ###   ########.fr       */
+/*   Created: 2026/06/23 12:00:00 by antgarci          #+#    #+#             */
+/*   Updated: 2026/06/23 12:00:00 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,46 @@ t_list	*ft_newlst(int content)
 	if (!n1)
 		return (NULL);
 	n1->num = content;
+	n1->index = 0;
 	n1->next = NULL;
 	n1->prev = NULL;
 	return (n1);
 }
-/*
-int	main(void)
+
+void	lstadd_back(t_list **stack, t_list *new)
 {
-	t_list	*l1 = ft_lstnew("l1");
-	printf("%s", (char *)l1->content);
-	free(l1);
+	t_list	*last;
+
+	if (!stack || !new)
+		return ;
+	if (!*stack)
+	{
+		new->next = new;
+		new->prev = new;
+		*stack = new;
+		return ;
+	}
+	last = (*stack)->prev;
+	last->next = new;
+	new->prev = last;
+	new->next = *stack;
+	(*stack)->prev = new;
 }
-*/
+
+void	free_stack(t_list **stack)
+{
+	t_list	*current;
+	t_list	*next_n;
+
+	if (!stack || !*stack)
+		return ;
+	(*stack)->prev->next = NULL;
+	current = *stack;
+	while (current)
+	{
+		next_n = current->next;
+		free(current);
+		current = next_n;
+	}
+	*stack = NULL;
+}

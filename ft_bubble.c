@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_Bubble.c                                        :+:      :+:    :+:   */
+/*   ft_bubble.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 17:29:42 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 19:06:31 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/23 12:00:00 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,61 @@
 
 int	ft_sizelst(t_list *lst)
 {
-    t_list  *last;
-    t_list	*current;
+	t_list	*current;
 	int		size;
 
-	size = 0;
-    last = lst->prev;
+	if (!lst)
+		return (0);
+	size = 1;
 	current = lst;
-	while (current != last)
+	while (current->next != lst)
 	{
 		current = current->next;
 		size++;
 	}
-	return (size + 1);
+	return (size);
 }
 
-void    bubble(t_list **stack_a, t_list **stack_b)
+static void	find_biggest(t_ps *ps, int len)
 {
-    int     len;
-    int     i;
-    int     moves;
+	int	i;
 
-    moves = 0;
-    len = ft_sizelst(*stack_a);
-    while (len > 1)
-    {
-        i = 0;
-        while (i < len)
-        {
-            if ((*stack_a)->num > (*stack_a)->next->num)
-                sa(stack_a);
-            ra(stack_a);
-            i++;
-        }
-        pb(stack_b, stack_a);
-        len--;
-    }
-    pb(stack_b, stack_a);
-    len = ft_sizelst(*stack_b);
-    while (len > 0)
-    {
-        rrb(stack_b);
-        pb(stack_a, stack_b);
-        len--;
-    }
+	i = 0;
+	while (i < len)
+	{
+		if (ps->a->num > ps->a->next->num)
+			sa(ps);
+		ra(ps);
+		i++;
+	}
+}
+
+static void	restore_to_a(t_ps *ps)
+{
+	int	len;
+
+	len = ft_sizelst(ps->b);
+	while (len > 0)
+	{
+		rrb(ps);
+		pa(ps);
+		len--;
+	}
+}
+
+void	bubble(t_ps *ps)
+{
+	int	len;
+
+	if (!ps || !ps->a)
+		return ;
+	len = ft_sizelst(ps->a);
+	while (len > 1)
+	{
+		find_biggest(ps, len);
+		pb(ps);
+		len--;
+	}
+	pb(ps);
+	restore_to_a(ps);
 }

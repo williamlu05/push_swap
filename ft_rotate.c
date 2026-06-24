@@ -6,7 +6,7 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:31:13 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 18:57:49 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/23 18:57:49 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 static void	ft_rotate(t_list **a)
 {
+	if (!*a)
+		return ;
 	*a = (*a)->next;
 }
 
-void	ra(t_list **a)
+void	ra(t_ps *ps)
 {
-	ft_rotate(a);
-	printf("ra\n");
+	ft_rotate(&ps->a);
+	ft_printf("ra\n");
+	ps->counts[OP_RA]++;
 }
 
-void	rb(t_list **b)
+void	rb(t_ps *ps)
 {
-	ft_rotate(b);
-	printf("rb\n");
+	ft_rotate(&ps->b);
+	ft_printf("rb\n");
+	ps->counts[OP_RB]++;
 }
 
-void	rr(t_list **a, t_list **b)
+void	rr(t_ps *ps)
 {
-	ft_rotate(a);
-	ft_rotate(b);
-	printf("rr\n");
+	ft_rotate(&ps->a);
+	ft_rotate(&ps->b);
+	ft_printf("rr\n");
+	ps->counts[OP_RR]++;
 }
