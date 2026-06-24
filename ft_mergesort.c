@@ -6,15 +6,15 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:00:00 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/10 12:00:00 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/23 12:00:00 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_b(t_list **a, t_list **b, int n);
+static void	sort_b(t_ps *ps, int n);
 
-static void	sort_a(t_list **a, t_list **b, int n)
+static void	sort_a(t_ps *ps, int n)
 {
 	int	half;
 	int	i;
@@ -23,23 +23,23 @@ static void	sort_a(t_list **a, t_list **b, int n)
 		return ;
 	if (n == 2)
 	{
-		if ((*a)->num > (*a)->next->num)
-			sa(a);
+		if (ps->a->num > ps->a->next->num)
+			sa(ps);
 		return ;
 	}
 	half = n / 2;
 	i = 0;
 	while (i < half)
 	{
-		pb(b, a);
+		pb(ps);
 		i++;
 	}
-	sort_a(a, b, n - half);
-	sort_b(a, b, half);
-	merge_to_a(a, b, n - half, half);
+	sort_a(ps, n - half);
+	sort_b(ps, half);
+	merge_to_a(ps, n - half, half);
 }
 
-static void	sort_b(t_list **a, t_list **b, int n)
+static void	sort_b(t_ps *ps, int n)
 {
 	int	half;
 	int	i;
@@ -48,30 +48,30 @@ static void	sort_b(t_list **a, t_list **b, int n)
 		return ;
 	if (n == 2)
 	{
-		if ((*b)->num > (*b)->next->num)
-			sb(b);
+		if (ps->b->num > ps->b->next->num)
+			sb(ps);
 		return ;
 	}
 	half = n / 2;
 	i = 0;
 	while (i < half)
 	{
-		pa(a, b);
+		pa(ps);
 		i++;
 	}
-	sort_a(a, b, half);
-	sort_b(a, b, n - half);
-	merge_to_b(a, b, half, n - half);
+	sort_a(ps, half);
+	sort_b(ps, n - half);
+	merge_to_b(ps, half, n - half);
 }
 
-void	mergesort(t_list **stack_a, t_list **stack_b)
+void	mergesort(t_ps *ps)
 {
 	int	n;
 
-	if (!stack_a || !*stack_a)
+	if (!ps || !ps->a)
 		return ;
-	n = ft_sizelst(*stack_a);
+	n = ft_sizelst(ps->a);
 	if (n <= 1)
 		return ;
-	sort_a(stack_a, stack_b, n);
+	sort_a(ps, n);
 }

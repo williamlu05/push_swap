@@ -6,18 +6,18 @@
 /*   By: antgarci <antgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:32:37 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/03 18:57:25 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/23 18:57:25 by antgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void	ft_swap(t_list **stack)
-{	
-	t_list *a;
-	t_list *b;
-	t_list *last;
-	t_list *c;
+{
+	t_list	*a;
+	t_list	*b;
+	t_list	*last;
+	t_list	*c;
 
 	if (!(*stack) || (*stack)->next == *stack)
 		return ;
@@ -39,21 +39,24 @@ static void	ft_swap(t_list **stack)
 	*stack = b;
 }
 
-void	sa(t_list **a)
+void	sa(t_ps *ps)
 {
-	ft_swap(a);
-	printf("sa\n");
+	ft_swap(&ps->a);
+	ft_printf("sa\n");
+	ps->counts[OP_SA]++;
 }
 
-void	sb(t_list **b)
+void	sb(t_ps *ps)
 {
-	ft_swap(b);
-	printf("sb\n");
+	ft_swap(&ps->b);
+	ft_printf("sb\n");
+	ps->counts[OP_SB]++;
 }
 
-void	ss(t_list **a, t_list **b)
+void	ss(t_ps *ps)
 {
-	ft_swap(a);
-	ft_swap(b);
-	printf("ss\n");
+	ft_swap(&ps->a);
+	ft_swap(&ps->b);
+	ft_printf("ss\n");
+	ps->counts[OP_SS]++;
 }
