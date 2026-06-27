@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_push_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 17:18:24 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/27 17:58:30 by wlu-bjor         ###   ########.fr       */
+/*   Updated: 2026/06/27 18:44:18 by wlu-bjor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static t_list	*detach_src(t_list **src)
 {
@@ -58,13 +58,9 @@ static void	ft_push(t_list **dst, t_list **src)
 void	pa(t_ps *ps)
 {
 	ft_push(&ps->a, &ps->b);
-	ft_printf("pa\n");
-	ps->counts[OP_PA]++;
 }
 
 void	pb(t_ps *ps)
 {
 	ft_push(&ps->b, &ps->a);
-	ft_printf("pb\n");
-	ps->counts[OP_PB]++;
 }

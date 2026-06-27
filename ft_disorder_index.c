@@ -3,41 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_disorder_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antgarci <antgarci@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 19:25:00 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/01 20:25:03 by antgarci         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:58:17 by wlu-bjor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_disorder_index(t_list *stack)
+double	ft_disorder_index(t_list *stack)
 {
-	double	dis_index;
+	t_list	*current;
+	t_list	*other;
 	double	mistakes;
 	double	pairs;
-	t_list	*current;
-	t_list	*last;
 
+	if (!stack)
+		return (0);
 	mistakes = 0;
 	pairs = 0;
-	last = stack->prev;
-	last->next = NULL;
 	current = stack;
-	printf("%d", current->num);
-	while (current->next != NULL)
+	while (current->next != stack)
 	{
-		if (current->num > current->next->num)
-			mistakes++;
-		pairs++;
+		other = current->next;
+		while (other != stack)
+		{
+			pairs++;
+			if (current->num > other->num)
+				mistakes++;
+			other = other->next;
+		}
 		current = current->next;
-		printf("mistakes:%f\npairs:%f\n", mistakes, pairs);
 	}
-	last->next = stack;
 	if (pairs == 0)
-		return(0);
-	dis_index = mistakes / pairs;
-	printf("%.2f\n", dis_index);
-	return (dis_index);
+		return (0);
+	return (mistakes / pairs);
 }

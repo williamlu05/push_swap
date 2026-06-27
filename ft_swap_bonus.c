@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_swap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:32:37 by antgarci          #+#    #+#             */
-/*   Updated: 2026/06/27 17:58:44 by wlu-bjor         ###   ########.fr       */
+/*   Updated: 2026/06/27 18:44:25 by wlu-bjor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static void	ft_swap(t_list **stack)
 {
@@ -42,21 +42,15 @@ static void	ft_swap(t_list **stack)
 void	sa(t_ps *ps)
 {
 	ft_swap(&ps->a);
-	ft_printf("sa\n");
-	ps->counts[OP_SA]++;
 }
 
 void	sb(t_ps *ps)
 {
 	ft_swap(&ps->b);
-	ft_printf("sb\n");
-	ps->counts[OP_SB]++;
 }
 
 void	ss(t_ps *ps)
 {
 	ft_swap(&ps->a);
 	ft_swap(&ps->b);
-	ft_printf("ss\n");
-	ps->counts[OP_SS]++;
 }
