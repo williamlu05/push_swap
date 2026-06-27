@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wlu-bjor <wlu-bjor@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/27 17:46:55 by wlu-bjor          #+#    #+#             */
+/*   Updated: 2026/06/27 18:46:08 by wlu-bjor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-#include "bonus.h"
+#include "checker_bonus.h"
 
 static int	try_shift(t_ps *ps, char *line)
 {
@@ -45,7 +55,7 @@ void	choose_movement(t_ps *ps, char *line)
 	error_exit(ps);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_ps	ps;
 	char	*line;
@@ -54,14 +64,12 @@ int main(int argc, char **argv)
 		return (0);
 	init_ps(&ps);
 	build_stack(&ps, argv, 1);
-
 	line = get_next_line(1);
 	while (line)
 	{
 		choose_movement(&ps, line);
 		line = get_next_line(1);
 	}
-
 	if (is_sorted(ps.a) && !ps.b)
 		ft_printf("OK");
 	else
