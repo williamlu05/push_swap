@@ -47,17 +47,13 @@ int		dup_controller(t_list *stack);
 void	error_exit(t_ps *ps);
 
 int		ft_atoi(const char *str, int *err);
-int		dup_controller(t_list *stack);
 t_list	*ft_newlst(int content);
-int		ft_sizelst(t_list *lst);
 
-void	init_ps(t_ps *ps);
 void	lstadd_back(t_list **stack, t_list *new);
 void	free_stack(t_list **stack);
-void	error_exit(t_ps *ps);
-void	build_stack(t_ps *ps, char **argv, int start);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		is_sorted(t_list *stack);
+int		ft_putstr_fd(char *s, int fd);
 
 #endif

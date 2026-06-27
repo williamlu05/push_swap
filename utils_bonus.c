@@ -72,18 +72,11 @@ int	is_sorted(t_list *stack)
 	return (1);
 }
 
-void	assign_index(t_list *stack)
+int	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*cur;
-
-	if (!stack)
-		return ;
-	cur = stack;
-	while (1)
-	{
-		cur->index = count_smaller(stack, cur->num);
-		cur = cur->next;
-		if (cur == stack)
-			break ;
-	}
+	if (fd < 0)
+		return (0);
+	if (s == NULL)
+		return (write(fd, "(null)", 6));
+	return (write(fd, s, ft_strlen(s)));
 }

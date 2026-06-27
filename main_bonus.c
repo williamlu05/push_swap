@@ -52,6 +52,7 @@ void	choose_movement(t_ps *ps, char *line)
 {
 	if (try_shift(ps, line) || try_rotate(ps, line))
 		return ;
+	free(line);
 	error_exit(ps);
 }
 
@@ -64,15 +65,18 @@ int	main(int argc, char **argv)
 		return (0);
 	init_ps(&ps);
 	build_stack(&ps, argv, 1);
-	line = get_next_line(1);
+	line = get_next_line(0);
 	while (line)
 	{
 		choose_movement(&ps, line);
-		line = get_next_line(1);
+		free(line);
+		line = get_next_line(0);
 	}
 	if (is_sorted(ps.a) && !ps.b)
-		ft_printf("OK");
+		ft_putstr_fd("OK\n", 1);
 	else
-		ft_printf("KO");
+		ft_putstr_fd("KO\n", 1);
+	free_stack(&ps.a);
+	free_stack(&ps.b);
 	return (0);
 }
