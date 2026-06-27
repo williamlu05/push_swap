@@ -21,21 +21,21 @@ void	sort_three(t_ps *ps)
 	a = ps->a->num;
 	b = ps->a->next->num;
 	c = ps->a->next->next->num;
-	if (a > b && b < c && a < c)
+	if (a > b && a < c)
 		sa(ps);
 	else if (a > b && b > c)
 	{
 		sa(ps);
 		rra(ps);
 	}
-	else if (a > b && b < c && a > c)
+	else if (a > b)
 		ra(ps);
-	else if (a < b && b > c && a < c)
+	else if (b > c && a < c)
 	{
 		sa(ps);
 		ra(ps);
 	}
-	else if (a < b && b > c && a > c)
+	else if (b > c)
 		rra(ps);
 }
 
