@@ -1,3 +1,5 @@
+ *Este proyecto ha sido creado como parte del currículo de 42 por wlu-bjor, antgarci-*
+
 # 🔄 push_swap
 
 ![C](https://img.shields.io/badge/language-C-blue)
