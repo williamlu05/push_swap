@@ -92,9 +92,7 @@ void	sort_three(t_ps *ps);
 void	sort_five(t_ps *ps);
 
 void	bubble(t_ps *ps);
-void	mergesort(t_ps *ps);
-void	merge_to_a(t_ps *ps, int ca, int cb);
-void	merge_to_b(t_ps *ps, int ca, int cb);
+void	radix_sort(t_ps *ps);
 
 void	chunk_sort(t_ps *ps);
 void	assign_index(t_list *stack);
