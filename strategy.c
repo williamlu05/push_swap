@@ -19,7 +19,7 @@ void	adaptive_sort(t_ps *ps, double disorder)
 	else if (disorder < 0.5)
 		chunk_sort(ps);
 	else
-		mergesort(ps);
+		radix_sort(ps);
 }
 
 void	run_strategy(t_ps *ps, t_opts *opts, double disorder)
@@ -31,7 +31,7 @@ void	run_strategy(t_ps *ps, t_opts *opts, double disorder)
 	else if (opts->strategy == S_MEDIUM)
 		chunk_sort(ps);
 	else if (opts->strategy == S_COMPLEX)
-		mergesort(ps);
+		radix_sort(ps);
 	else
 		adaptive_sort(ps, disorder);
 }

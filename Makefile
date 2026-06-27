@@ -20,8 +20,7 @@ SRCS = main.c \
        ft_rev_rotate.c \
        sort_small.c \
        ft_bubble.c \
-       ft_mergesort.c \
-       utils_merge.c \
+       ft_radixsort.c \
        ft_chunksort.c \
        utils_chunk.c \
 
