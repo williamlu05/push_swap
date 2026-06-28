@@ -48,11 +48,24 @@ static int	try_rotate(t_ps *ps, char *line)
 	return (1);
 }
 
+static void	free_lines(void)
+{
+	char	*rest;
+
+	rest = get_next_line(0);
+	while (rest)
+	{
+		free(rest);
+		rest = get_next_line(0);
+	}
+}
+
 void	choose_movement(t_ps *ps, char *line)
 {
 	if (try_shift(ps, line) || try_rotate(ps, line))
 		return ;
 	free(line);
+	free_lines();
 	error_exit(ps);
 }
 

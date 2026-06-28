@@ -41,7 +41,7 @@ static char	*adaptive_name(double disorder)
 	if (disorder < 0.2)
 		return ("Adaptive / O(n)");
 	if (disorder < 0.5)
-		return ("Adaptive / O(n*sqrt(n))");
+		return ("Adaptive / O(n\u221An)");
 	return ("Adaptive / O(n log n)");
 }
 
@@ -50,7 +50,7 @@ char	*strategy_name(int strategy, double disorder)
 	if (strategy == S_SIMPLE)
 		return ("Simple / O(n^2)");
 	if (strategy == S_MEDIUM)
-		return ("Medium / O(n*sqrt(n))");
+		return ("Medium / O\u221An)");
 	if (strategy == S_COMPLEX)
 		return ("Complex / O(n log n)");
 	return (adaptive_name(disorder));
