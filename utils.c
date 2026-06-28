@@ -41,7 +41,6 @@ int	ft_atoi(const char *str, int *err)
 	return ((int)(num * sign));
 }
 
-// Returns 0 if two strings equals, difference of content of unequal
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
