@@ -5,6 +5,8 @@
 ![C](https://img.shields.io/badge/language-C-blue)
 ![42](https://img.shields.io/badge/project-42-purple)
 
+## Description
+
 Sort a list of integers using only two stacks and a limited set of operations. The program selects the most efficient algorithm based on input size and order, then outputs the sequence of operations needed to sort stack `a` from smallest to largest.
 
 ## Table of contents
@@ -15,6 +17,8 @@ Sort a list of integers using only two stacks and a limited set of operations. T
 - [Benchmark mode](#benchmark-mode)
 - [Flags](#flags)
 - [Usage](#usage)
+- [Checker (bonus)](#checker-bonus)
+- [Resources](#resources)
 
 ---
 
@@ -71,7 +75,7 @@ Uses the sortedness index to pick the most efficient algorithm automatically, co
 
 A value between `0.0` and `1.0` that measures how disordered the input is before any operation runs.
 
-- `0.0` — perfectly sorted list (no operations needed).
+- `0.0` — perfectly sorted list.
 - `1.0` — maximally disordered list.
 
 It is calculated by scanning the list in consecutive pairs. Each pair where the left element is greater than the right counts as a mistake. The index equals the number of mistakes divided by the total number of pairs examined.
@@ -86,7 +90,7 @@ The adaptive strategy uses this index together with the input size to decide whi
 
 ## Benchmark mode
 
-When the `--bench` flag is present, the program prints a summary to `stderr` after sorting. This output is separate from the operation list (which goes to `stdout`), so piping the result is not affected.
+When the `--bench` flag is present, the program prints a summary to `stderr` after sorting. This output is separate from the operation list, therefore going to  `stdout`, so piping the result is not affected.
 
 The benchmark summary includes:
 
@@ -95,16 +99,14 @@ The benchmark summary includes:
 - Total number of operations executed
 - Breakdown of each individual operation type and its count
 
-Example output (stderr):
+Example output written in stderr:
 
 ```
-index:      0.74
-strategy:   chunk sort
-operations: 312
-  sa: 0    sb: 0    ss: 0
-  pa: 87   pb: 87
-  ra: 44   rb: 31   rr: 12
-  rra: 27  rrb: 24  rrr: 0
+[bench] disorder: 47.39%
+[bench] strategy: Adaptive / O(n√n)
+[bench] total_ops: 797
+[bench] sa: 0 sb: 0 ss: 0 pa: 100 pb: 100
+[bench] ra: 404 rb: 96 rr: 0 rra: 0 rrb: 97 rrr: 0
 ```
 
 ---
@@ -122,7 +124,23 @@ Flags must appear **before** the list of numbers.
 
 ---
 
-## Usage
+## Instructions
+
+### Building the project
+
+The project is built with the included `Makefile`. It first compiles the `ft_printf`
+library for later use, and then the program itself, always with the `-Wall
+-Wextra -Werror` flags. The project includes the common Makefile functions, both for the main project and the bonus section.
+
+```bash
+make
+make bonus
+make clean
+make fclean
+make re
+```
+
+### Running push_swap
 
 ```bash
 ./push_swap [flags] number1 number2 number3 ...
@@ -137,8 +155,52 @@ Examples:
 ./push_swap --bench --simple 3 1 2
 ```
 
-To check the result is valid, pipe the output into a checker:
+To check the result is valid, pipe the output into the provided Linux checker, or into
+our own checker built with `make bonus`:
+
+```bash
+./push_swap 4 2 7 1 5 | ./checker_linux 4 2 7 1 5
+./push_swap 4 2 7 1 5 | ./checker 4 2 7 1 5
+```
+
+---
+
+## Bonus Section: Checker
+The `checker` program verifies that a sequence of operations actually sorts the stack.
+
+**Our approach.** `checker` receives the same list of integers as `push_swap` as
+command-line arguments and builds stack `a` from them, validating the input exactly
+like `push_swap`: rejecting non-integers, values outside the `int` range and
+duplicates. It then reads operations from **standard input** one line at a time with
+`get_next_line`, applying each one to the stacks as it is read. Every operation is
+matched against the eleven valid instructions; any unknown or malformed line is treated
+as an error. Once the input ends, it checks the final state:
+
+- prints `OK` if stack `a` is sorted and stack `b` is empty,
+- prints `KO` otherwise,
+- prints `Error` (to `stderr`) if the arguments are invalid or an instruction does not
+  exist.
+
+**Usage.** Feed the operations through standard input — typically by piping them
+straight from `push_swap`:
 
 ```bash
 ./push_swap 4 2 7 1 5 | ./checker 4 2 7 1 5
+echo -e "pb\npb\nsa" | ./checker 4 2 7 1 5
+echo -e "sa\nfoo" | ./checker 4 2 7 1 5
 ```
+
+---
+
+## Resources
+
+- **Algorithm visualizations** — YouTube videos showing how the different sorting
+  strategies move data step by step, which helped to design and reason about the
+  operation sequences.
+- **C documentation** — the standard library and system call manuals consulted directly
+  from the terminal for the authorized functions (`read`, `write`, `malloc`,
+  `free`, `exit`).
+- **AI** — used as a support tool for debugging and locating errors (tracking down edge
+  cases, memory issues and unexpected behavior), not for generating the algorithms
+  themselves.
+
